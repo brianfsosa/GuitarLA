@@ -15,7 +15,7 @@ function Blog() {
    },[])
   return (
      <Layout pagina='Blog'>
-        <h1>Blog</h1>
+        <h1>The Blog</h1>
      </Layout>
   )
 }
