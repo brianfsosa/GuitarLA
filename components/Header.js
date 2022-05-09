@@ -8,7 +8,9 @@ function Header() {
         <div className="contenedor">
             <div className={styles.barra}>
               <Link href='/'>
-                <Image width={400} height={100} src='/img/logo.svg' alt="imagen logo" />
+                <a>
+                  <Image width={400} height={100} src='/img/logo.svg' alt="imagen logo" />
+                </a>
               </Link>
               <nav className={styles.navegacion}>
                   <Link href='/'>Inicio</Link>
