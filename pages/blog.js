@@ -11,11 +11,11 @@ function Blog() {
          console.log(resultado)
       }
       consultarAPI()
-      
+      s
    },[])
   return (
      <Layout pagina='Blog'>
-        <h1>The Blog</h1>
+        <h1>The  real Blog</h1>
      </Layout>
   )
 }
