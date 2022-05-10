@@ -3,7 +3,7 @@ function EntradaBlog({entrada}) {
 
     console.log(entrada)
     return (
-        <div>EntradaBlog</div>
+        <div>Entrada de Blog</div>
     )
 }
 export async function getServerSideProps({query: { id }}) {
