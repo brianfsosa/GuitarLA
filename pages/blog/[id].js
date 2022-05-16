@@ -1,28 +1,43 @@
+import Image from "next/image"
+import Layout from "../../components/Layout"
+import { formatearFecha } from '../../helpers'
+import styles from '../../styles/Entrada.module.css'
 
 function EntradaBlog({entrada}) {
-
-    console.log(entrada)
+    const {contenido, imagen, published_at, titulo} = entrada
+    
     return (
-        <div>Entrada de Blog</div>
+        <Layout>
+            <main className="contenedor">
+                <h1 className="heading">{titulo}</h1>
+                <article>
+                    <Image layout='responsive' width={800} height={600} src={imagen.url} alt={`Imagen de entrada ${titulo}`} />
+                    <div>
+                     <p>{formatearFecha(published_at)}</p>
+                     <p>{contenido}</p>
+                    </div>
+                </article>
+            </main>
+        </Layout>
     )
 }
 
 export async function getStaticPaths(){
-    const url = 'http://localhost:1337/blogs'
+    const url = `${process.env.API_URL}/blogs`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json()
 
     const paths = entrada.map(entrada => ({
-        params:{id: entrada.id}
+        params:{id: entrada.id.toString()}
     }))
     console.log(paths)
     return {
         paths,
-        fallback: true
+        fallback: false
     }
 }
 export async function getStaticProps({params: { id }}) {
-    const url = `http://localhost:1337/blogs/${id}`
+    const url = `${process.env.API_URL}/blogs/${id}`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json()
     return {
@@ -34,6 +49,7 @@ export async function getStaticProps({params: { id }}) {
 
 /* export async function getServerSideProps({query: { id }}) {
     const url = `http://localhost:1337/blogs/${id}`
+    const url = `${process.env.API_URL}/blogs/${id}`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json()
     return {
