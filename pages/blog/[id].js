@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Layout from "../../components/Layout"
 import { formatearFecha } from '../../helpers'
-import styles from '../../styles/Entrada.module.css'
+import style from '../../styles/Entrada.module.css'
 
 function EntradaBlog({entrada}) {
     const {contenido, imagen, published_at, titulo} = entrada
@@ -10,11 +10,11 @@ function EntradaBlog({entrada}) {
         <Layout>
             <main className="contenedor">
                 <h1 className="heading">{titulo}</h1>
-                <article>
+                <article className={style.entrada}>
                     <Image layout='responsive' width={800} height={600} src={imagen.url} alt={`Imagen de entrada ${titulo}`} />
-                    <div>
-                     <p>{formatearFecha(published_at)}</p>
-                     <p>{contenido}</p>
+                    <div className={style.contenido}>
+                     <p className={style.fecha}>{formatearFecha(published_at)}</p>
+                     <p className={style.texto}>{contenido}</p>
                     </div>
                 </article>
             </main>
