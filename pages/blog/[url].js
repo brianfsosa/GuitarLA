@@ -4,10 +4,10 @@ import { formatearFecha } from '../../helpers'
 import style from '../../styles/Entrada.module.css'
 
 function EntradaBlog({entrada}) {
-    const {contenido, imagen, published_at, titulo} = entrada
+    const {contenido, imagen, published_at, titulo} = entrada[0]
     
     return (
-        <Layout>
+        <Layout pagina={titulo}>
             <main className="contenedor">
                 <h1 className="heading">{titulo}</h1>
                 <article className={style.entrada}>
@@ -28,7 +28,7 @@ export async function getStaticPaths(){
     const entrada = await respuesta.json()
 
     const paths = entrada.map(entrada => ({
-        params:{id: entrada.id.toString()}
+        params:{url: entrada.url}
     }))
     console.log(paths)
     return {
@@ -36,13 +36,13 @@ export async function getStaticPaths(){
         fallback: false
     }
 }
-export async function getStaticProps({params: { id }}) {
-    const url = `${process.env.API_URL}/blogs/${id}`
-    const respuesta = await fetch(url)
+export async function getStaticProps({params: { url }}) {
+    const urlBlog = `${process.env.API_URL}/blogs?url=${url}`
+    const respuesta = await fetch(urlBlog)
     const entrada = await respuesta.json()
     return {
         props:{
-            entrada
+            entrada: entrada
         }
     }
 }
