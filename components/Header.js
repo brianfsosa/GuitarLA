@@ -30,7 +30,7 @@ function Header({guitarra}) {
                 <p className={styles.precio}>${guitarra.precio}</p>
                 <Link href={`/guitarras/${guitarra.url}`}>
                   <a className={styles.enlace}>
-                    Ver Product
+                    Ver Producto
                   </a>
                 </Link>
               </div>
