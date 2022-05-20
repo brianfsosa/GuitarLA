@@ -1,7 +1,8 @@
+
 import Layout from "../components/Layout"
 import styles from '../styles/Carrito.module.css'
 
-function Carrito() {
+function Carrito({carrito}) {
   return (
     <Layout pagina={'Carrito de compras'}>
         <h1 className="heading">Carrito</h1>
