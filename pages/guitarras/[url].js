@@ -19,7 +19,7 @@ function Producto({guitarra, agregarCarrito}) {
                     <p className={styles.precio}>${precio}</p>
 
                     <form className={styles.formulario} onSubmit={handleSubmit}>
-                        <laber>Cantdad:</laber>
+                        <laber>Cantidad:</laber>
                         <select>
                             <option value=''>-- Seleccione --</option>
                             <option value='1'>1</option>
