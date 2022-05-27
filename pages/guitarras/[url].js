@@ -34,7 +34,7 @@ function Producto({guitarra, agregarCarrito}) {
                     <p className={styles.precio}>${precio}</p>
 
                     <form className={styles.formulario} onSubmit={handleSubmit}>
-                        <laber>Cantida:</laber>
+                        <laber>Cantidad:</laber>
                         <select 
                             value={cantidad}
                             onChange={e => setCantidad(parseInt(e.target.value))}
